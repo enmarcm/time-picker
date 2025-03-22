@@ -1,0 +1,14 @@
+<div class="time-picker-container">
+  <ng-container [ngSwitch]="type">
+    <analog-clock *ngSwitchCase="TimePickerType.AnalogClock" ></analog-clock>
+    <analog-clock-two *ngSwitchCase="TimePickerType.AnalogClockTwo" [customTime]="parsedCustomTime"></analog-clock-two>
+    <analog-clock-three *ngSwitchCase="TimePickerType.AnalogClockThree" [customTime]="parsedCustomTime"></analog-clock-three>
+    <casio-clock *ngSwitchCase="TimePickerType.Casio" [customTime]="parsedCustomTime"></casio-clock>
+    <clock-digital-one *ngSwitchCase="TimePickerType.ClockDigitalOne" [customTime]="parsedCustomTime"></clock-digital-one>
+    <clock-digital-two *ngSwitchCase="TimePickerType.ClockDigitalTwo" [customTime]="parsedCustomTime"></clock-digital-two>
+    <clock-digital-three *ngSwitchCase="TimePickerType.ClockDigitalThree" [customTime]="parsedCustomTime"></clock-digital-three>
+    <clock-digital-four *ngSwitchCase="TimePickerType.ClockDigitalFour" [customTime]="parsedCustomTime"></clock-digital-four>
+    <clock-digital-five *ngSwitchCase="TimePickerType.ClockDigitalFive" [customTime]="parsedCustomTime"></clock-digital-five>
+    <clock-digital-six *ngSwitchCase="TimePickerType.ClockDigitalSix" [customTime]="parsedCustomTime"></clock-digital-six>
+  </ng-container>
+</div>

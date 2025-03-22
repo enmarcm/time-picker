@@ -1,0 +1,89 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Opcional: si el body de tu aplicación ya está definido, esta regla puede omitirse */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.clock {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    background-color: lightgray;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #05263c, #000d1a);
+}
+
+.clock::before {
+    content: "";
+    width: 525px;
+    height: 525px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to right, #00d9ff, #ee00ff);
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+
+.number {
+    transform: rotate(calc(30deg * var(--n)));
+    position: absolute;
+    text-align: center;
+    inset: 20px;
+    font-size: 40px;
+    color: white;
+}
+
+.number b {
+    transform: rotate(calc(-30deg * var(--n)));
+    display: inline-block;
+}
+
+.center-dot {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: gray;
+    border-radius: 50%;
+}
+
+/* Se ha modificado la transformación para usar la variable directamente */
+.hour-hand, .minute-hand, .second-hand {
+    /* Valor inicial, se actualizará mediante Angular */
+    --rotate: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%) rotate(var(--rotate));
+    transform-origin: bottom;
+}
+
+.hour-hand {
+    width: 12px;
+    height: 130px;
+    background-color: black;
+}
+
+.minute-hand {
+    width: 12px;
+    height: 190px;
+    background-color: blue;
+}
+
+.second-hand {
+    height: 210px;
+    width: 6px;
+    background-color: red;
+}

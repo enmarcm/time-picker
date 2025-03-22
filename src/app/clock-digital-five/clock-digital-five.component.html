@@ -1,0 +1,17 @@
+<div class="clock">
+  <div class="display">
+    <div class="weekdays">
+      <span *ngFor="let day of weekDays; let i = index" [class.active]="i === activeDayIndex">
+        {{ day }}
+      </span>
+    </div>
+    <div class="timeDisplay">
+      <div class="time">
+        <span class="hours">{{ hours }}</span><span class="dot">:</span>
+        <span class="minutes">{{ minutes }}</span><span class="dot">:</span>
+        <span class="seconds">{{ seconds }}</span>
+      </div>
+      <span class="format">{{ format }}</span>
+    </div>
+  </div>
+</div>

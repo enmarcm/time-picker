@@ -1,6 +1,14 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { environment } from '../enviroment';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+
+const firebaseProviders = [  provideFirebaseApp(fbApp),  provideAuth(authApp),];
+
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+  ],
+}).catch((err) => console.error(err));

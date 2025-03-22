@@ -1,0 +1,16 @@
+.container-main{
+    width: 100vp;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px
+}
+
+.container-item{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
