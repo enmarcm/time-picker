@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule], // Importar ReactiveFormsModule aquí
+  imports: [ReactiveFormsModule, CommonModule],
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -28,12 +29,16 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).then(() => {
-        this.router.navigate(['/main']); // Redirigir al main después del login
+        this.router.navigate(['/main']); 
       }).catch((error) => {
         alert('Error: ' + error.message);
       });
     } else {
       alert('Por favor, completa todos los campos correctamente.');
     }
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['/register']);
   }
 }

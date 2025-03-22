@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
   imports: [CommonModule]
 })
 export class ClockDigitalTwoComponent implements OnInit {
-  @Input() customTime?: Date; // Hora personalizada en formato Date
+  @Input() customTime?: Date; 
   currentTime: string = '';
   currentDate: string = '';
 

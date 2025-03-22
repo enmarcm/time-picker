@@ -9,4 +9,5 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'main', component: MainComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' },
 ];

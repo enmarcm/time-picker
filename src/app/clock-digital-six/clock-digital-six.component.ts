@@ -21,13 +21,11 @@ export class ClockDigitalSixComponent implements OnInit {
   updateClock(): void {
     const now = this.customTime ? new Date(this.customTime) : new Date();
 
-    // Formatear la hora
     const hours = this.formatTime(now.getHours());
     const minutes = this.formatTime(now.getMinutes());
     const seconds = this.formatTime(now.getSeconds());
     this.currentTime = `${hours}:${minutes}:${seconds}`;
 
-    // Formatear la fecha
     const day = now.toLocaleDateString('en-US', { weekday: 'short' });
     const date = now.toLocaleDateString('en-US', {
       year: 'numeric',

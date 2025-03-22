@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
   imports: [CommonModule]
 })
 export class AnalogClockComponent implements OnInit {
-  @Input() customTime?: Date; // Hora personalizada
+  @Input() customTime?: Date; 
   secondRotation: number = 0;
   minuteRotation: number = 0;
   hourRotation: number = 0;
@@ -26,8 +26,8 @@ export class AnalogClockComponent implements OnInit {
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
-    this.secondRotation = seconds * 6; // Cada segundo son 6 grados
-    this.minuteRotation = minutes * 6 + seconds / 10; // Cada minuto son 6 grados, más ajuste por segundos
-    this.hourRotation = (hours % 12) * 30 + minutes / 2; // Cada hora son 30 grados, más ajuste por minutos
+    this.secondRotation = seconds * 6; 
+    this.minuteRotation = minutes * 6 + seconds / 10; 
+    this.hourRotation = (hours % 12) * 30 + minutes / 2; 
   }
 }

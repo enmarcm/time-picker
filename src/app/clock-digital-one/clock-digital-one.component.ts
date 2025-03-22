@@ -9,8 +9,6 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
   imports: [CommonModule]
 })
 export class ClockDigitalOneComponent implements OnInit, OnDestroy {
-  // Si se pasa una fecha/hora específica (por ejemplo: new Date(2025, 2, 21, 15, 30, 0)),
-  // se mostrará esa hora de forma estática; de lo contrario, se usará la hora actual.
   @Input() customTime?: Date;
 
   clockText: string = '00:00:00';
@@ -19,7 +17,7 @@ export class ClockDigitalOneComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateClock();
-    // Actualizamos cada segundo solo si no se pasa una hora fija
+
     if (!this.customTime) {
       this.timer = setInterval(() => this.updateClock(), 1000);
     }
@@ -40,7 +38,7 @@ export class ClockDigitalOneComponent implements OnInit, OnDestroy {
 
     if (!this.is24HourFormat) {
       period = hours >= 12 ? ' PM' : ' AM';
-      hours = hours % 12 || 12; // Convierte 0 a 12
+      hours = hours % 12 || 12
     }
     const hoursStr = String(hours).padStart(2, '0');
     this.clockText = `${hoursStr}:${minutes}:${seconds}${period}`;

@@ -2,13 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule], // Importar ReactiveFormsModule aquí
+  imports: [ReactiveFormsModule, CommonModule],
 })
 export class RegisterComponent {
   registerForm: FormGroup;
@@ -35,5 +37,9 @@ export class RegisterComponent {
     } else {
       alert('Por favor, completa todos los campos correctamente.');
     }
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
   }
 }
