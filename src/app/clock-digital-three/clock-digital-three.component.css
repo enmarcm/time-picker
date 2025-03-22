@@ -9,14 +9,19 @@ p {
   padding: 0;
 }
 
+.reloj-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem; 
+  background-color: #000;
+  border-radius: 20px;
+}
+
 .reloj {
   font-family: 'Share Tech Mono', monospace;
   color: #ffffff;
   text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
   background-color: black;
   padding: 12px;

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'analog-clock',
@@ -8,15 +8,28 @@ import { Component, Input, OnInit } from '@angular/core';
   standalone: true,
   imports: [CommonModule]
 })
-export class AnalogClockComponent implements OnInit {
+export class AnalogClockComponent implements OnInit, OnChanges {
   @Input() customTime?: Date; 
   secondRotation: number = 0;
   minuteRotation: number = 0;
   hourRotation: number = 0;
 
+  private intervalId: any;
+
   ngOnInit(): void {
     this.updateClock();
-    setInterval(() => this.updateClock(), 1000);
+    this.startClock();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['customTime'] && changes['customTime'].currentValue) {
+      this.updateClock();
+    }
+  }
+
+  startClock(): void {
+    clearInterval(this.intervalId);
+    this.intervalId = setInterval(() => this.updateClock(), 1000);
   }
 
   updateClock(): void {
@@ -26,8 +39,13 @@ export class AnalogClockComponent implements OnInit {
     const minutes = now.getMinutes();
     const hours = now.getHours();
 
+    
     this.secondRotation = seconds * 6; 
-    this.minuteRotation = minutes * 6 + seconds / 10; 
-    this.hourRotation = (hours % 12) * 30 + minutes / 2; 
+    this.minuteRotation = minutes * 6 + seconds * 0.1; 
+    this.hourRotation = (hours % 12) * 30 + minutes * 0.5; 
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId); 
   }
 }

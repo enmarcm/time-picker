@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 export enum TimePickerType {
   AnalogClock = 'analog-clock',
@@ -13,7 +13,6 @@ export enum TimePickerType {
   ClockDigitalFive = 'clock-digital-five',
   ClockDigitalSix = 'clock-digital-six'
 }
-
 
 import { AnalogClockComponent } from '../analog-clock/analog-clock.component';
 import { AnalogClockTwoComponent } from '../analog-clock-two/analog-clock-two.component';
@@ -45,13 +44,17 @@ import { ClockDigitalSixComponent } from '../clock-digital-six/clock-digital-six
   templateUrl: './time-picker.component.html',
   styleUrls: ['./time-picker.component.css']
 })
-export class TimePickerComponent {
+export class TimePickerComponent implements OnChanges {
   @Input() type: TimePickerType = TimePickerType.AnalogClock;
   @Input() customTime?: string | Date;
 
-  get parsedCustomTime(): Date | undefined {
-    return this.customTime ? new Date(this.customTime) : undefined;
+  parsedCustomTime: Date | undefined;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['customTime'] && changes['customTime'].currentValue) {
+      this.parsedCustomTime = new Date(changes['customTime'].currentValue);
+    }
   }
 
-  TimePickerType = TimePickerType; 
+  TimePickerType = TimePickerType;
 }

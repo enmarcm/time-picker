@@ -1,16 +1,81 @@
-.container-main{
-    width: 100vp;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px
+.container-todo{
+   
+    gap: 1rem;
+    width: 100%;
+    overflow-x: hidden !important;
 }
 
-.container-item{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.container-main {
+  width: 100vw; 
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000;
+  background-color: rgb(239, 255, 255); 
+}
+
+.container-item {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem; 
+  z-index: 500;
+}
+
+mat-form-field {
+  width: 100%; 
+}
+
+mat-slider {
+  width: 100%; 
+}
+
+p {
+  margin: 0;
+  font-size: 1rem;
+  color: #333; 
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #555; 
+}
+
+.time-picker-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }

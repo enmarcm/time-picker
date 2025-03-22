@@ -1,14 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  OnDestroy,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'clock-digital-one',
   templateUrl: './clock-digital-one.component.html',
   styleUrls: ['./clock-digital-one.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
-export class ClockDigitalOneComponent implements OnInit, OnDestroy {
+export class ClockDigitalOneComponent implements OnInit, OnDestroy, OnChanges {
   @Input() customTime?: Date;
 
   clockText: string = '00:00:00';
@@ -20,6 +27,12 @@ export class ClockDigitalOneComponent implements OnInit, OnDestroy {
 
     if (!this.customTime) {
       this.timer = setInterval(() => this.updateClock(), 1000);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['customTime'] && changes['customTime'].currentValue) {
+      this.updateClock();
     }
   }
 
@@ -38,7 +51,7 @@ export class ClockDigitalOneComponent implements OnInit, OnDestroy {
 
     if (!this.is24HourFormat) {
       period = hours >= 12 ? ' PM' : ' AM';
-      hours = hours % 12 || 12
+      hours = hours % 12 || 12;
     }
     const hoursStr = String(hours).padStart(2, '0');
     this.clockText = `${hoursStr}:${minutes}:${seconds}${period}`;

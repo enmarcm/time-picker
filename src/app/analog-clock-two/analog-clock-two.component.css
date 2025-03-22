@@ -13,8 +13,8 @@ body {
 }
 
 .clock {
-    width: 500px;
-    height: 500px;
+    width: 250px; 
+    height: 250px; 
     position: relative;
     background-color: lightgray;
     border-radius: 50%;
@@ -26,12 +26,12 @@ body {
 
 .clock::before {
     content: "";
-    width: 525px;
-    height: 525px;
+    width: 262.5px; 
+    height: 262.5px; 
     position: absolute;
     border-radius: 50%;
     background: linear-gradient(to right, #00d9ff, #ee00ff);
-    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 7.5px 7.5px rgba(0, 0, 0, 0.2); 
     z-index: -1;
 }
 
@@ -39,8 +39,8 @@ body {
     transform: rotate(calc(30deg * var(--n)));
     position: absolute;
     text-align: center;
-    inset: 20px;
-    font-size: 40px;
+    inset: 10px; 
+    font-size: 20px; 
     color: white;
 }
 
@@ -51,8 +51,8 @@ body {
 
 .center-dot {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 12.5px; 
+    height: 12.5px; 
     background-color: gray;
     border-radius: 50%;
 }
@@ -67,19 +67,19 @@ body {
 }
 
 .hour-hand {
-    width: 12px;
-    height: 130px;
+    width: 6px; 
+    height: 65px; 
     background-color: black;
 }
 
 .minute-hand {
-    width: 12px;
-    height: 190px;
+    width: 6px; 
+    height: 95px; 
     background-color: blue;
 }
 
 .second-hand {
-    height: 210px;
-    width: 6px;
+    height: 105px; 
+    width: 3px; 
     background-color: red;
 }

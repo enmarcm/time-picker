@@ -5,21 +5,23 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-body {
-  background: #000000;
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; 
 }
 
 .clock {
   display: flex;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
   justify-content: center;
   align-items: center;
   gap: 0.25rem;
   color: #ff0000;
-  font-size: 3rem;
-  letter-spacing: 1vw;
+  font-size: 2rem; 
+  letter-spacing: 0.2rem; 
+  padding: 1rem; 
+  background: #000000; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }

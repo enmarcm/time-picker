@@ -1,14 +1,56 @@
-<div class="container-main">
+<div class="container-todo">
+  <app-navbar />
+  <div class="container-main">
     <div class="container-item">
-        <div>
-            AQUI IRA EL DROPDOWN
-        </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Selecciona un diseño</mat-label>
+          <mat-select [(value)]="selectedOption">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-        <div>
-            AQUI IRAN LAS OTRAS OPCIONES
-        </div>
+      <div *ngIf="isDatePickerEnabled()">
+        <mat-form-field appearance="fill">
+          <mat-label>Selecciona una fecha</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            (dateChange)="onDateChange($event.value)"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <label>Selecciona el tiempo (en segundos):</label>
+        <input
+          type="range"
+          min="0"
+          max="86399"
+          step="1"
+          [value]="getTotalSeconds()"
+          (input)="onSliderChange($event)"
+        />
+        <p>
+          Hora seleccionada: {{ selectedHour }}:{{ selectedMinute | number: '2.0' }}:{{ selectedSecond | number: '2.0' }}
+        </p>
+      </div>
+
+      <div>
+        <button (click)="resetClock()">Reiniciar a la hora actual</button>
+      </div>
     </div>
+
     <div class="container-item">
-        <time-picker [type]="TimePickerType.ClockDigitalSix"/>
+      <time-picker
+        [type]="selectedOption || TimePickerType.ClockDigitalSix"
+        [customTime]="getCustomTime()"
+      ></time-picker>
     </div>
+  </div>
 </div>
